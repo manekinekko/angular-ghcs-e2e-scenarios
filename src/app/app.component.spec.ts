@@ -1,11 +1,23 @@
 import { TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 import { AppComponent } from './app.component';
+import { DateService } from './date.service';
+
+const mockedDate = 'Sun, 06 Dec 2020 23:16:47 GMT';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
+      declarations: [AppComponent],
+      providers: [
+        {
+          provide: DateService,
+          useValue: {
+            getDate() {
+              return of(mockedDate);
+            },
+          },
+        },
       ],
     }).compileComponents();
   });
@@ -14,18 +26,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'angular-ghcs-e2e-scenarios'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-ghcs-e2e-scenarios');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('angular-ghcs-e2e-scenarios app is running!');
   });
 });

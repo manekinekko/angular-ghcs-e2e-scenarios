@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "angular-ghcs-e2e-scenarios"
+  "defaultProject": "angular-ghcs-e2e-scenarios",
+  "cli": {
+    "analytics": "a5bb670a-c188-44f1-894d-1419183b7049"
+  }
 }
